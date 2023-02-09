@@ -3,8 +3,8 @@
 function connectionData()
 {
     try {
-        $user = "root";
-        $pass = "";
+        $user = "admin";
+        $pass = "adminpwd";
         $pdo = new PDO('mysql:host=localhost;dbname=vapStore', $user, $pass);
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
          echo "ca marche !";
@@ -31,7 +31,7 @@ function addData($ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock)
     try 
     {
         $con = connectionData();
-        $insert = "INSERT INTO `tabchichapomme`(`Référence`, `Nom de l'article`, `Description de l'article`, `Prix d'achat unitaire`, `Prix de vente unitaire`, `Quantité en stock`) 
+        $insert = "INSERT INTO `tabChichaPomme`(`Référence`, `Nom de l'article`, `Description de l'article`, `Prix d'achat unitaire`, `Prix de vente unitaire`, `Quantité en stock`) 
         VALUES ('$ref','$nArticle','$dArticle','$aUnitaire','$vUnitaire','$qStock')" ;
 
         $con->exec($insert);

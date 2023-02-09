@@ -13,16 +13,16 @@ $qStock = $_POST    ["qStock"] ?? null;
 
 // connection a la base de donées
 $coData = connectionData();
-$recupAllTab = allColData();
-$user = $recupAllTab[0];
-echo $user["ID"];
 
-// ajouter a la base de donées via le formulaire
 // si les variable contiens des valeurs via le formulaire alors au moment de l'envoie il l'envoie a notre base de donées les saisie 
 if (!empty($ref) && !empty($nArticle) && !empty($dArticle) && !empty($aUnitaire) && !empty($vUnitaire) && !empty($qStock))
 {
     addData($ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock);
 }
+
+// recupère toute les données dans un tableaux
+$recupAllTab = allColData();
+
 
 ?>
 <!doctype html>
@@ -37,7 +37,7 @@ if (!empty($ref) && !empty($nArticle) && !empty($dArticle) && !empty($aUnitaire)
         <!-- TABLEAUX HTML -->
         <?php
             $ref = getHeaderTable();
-            afficherTab($ref,$user);
+            afficherTab($ref,$recupAllTab);
         ?>
 
 

@@ -1,5 +1,5 @@
 <?php
-function afficherTab($header,$row)
+function afficherTab($header,$rows)
 {
 ?>
     <table class="table table-dark">
@@ -8,6 +8,18 @@ function afficherTab($header,$row)
                 <th><?= $headers;?></th>
             <?php endforeach ?>
         </tr>
+            <?php foreach ($rows as $row) : ?>
+                <tr>
+                    <td><?=$row["ID"];?></td>
+                    <td><?=$row["Référence"];?></td>
+                    <td><?=$row["Nom de l'article"];?></td>
+                    <td><?=$row["Description de l'article"];?></td>
+                    <td><?=$row["Prix d'achat unitaire"];?></td>
+                    <td><?=$row["Prix de vente unitaire"];?></td>
+                    <td><?=$row["Quantité en stock"];?></td>
+                </tr>
+            <?php endforeach ?>
+        
     </table>
 <?php
 }
