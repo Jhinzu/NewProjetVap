@@ -7,6 +7,8 @@ function afficherTab($header,$rows)
             <?php foreach ($header as $headers) : ?>
                 <th><?= $headers;?></th>
             <?php endforeach ?>
+            <th colspan="2" class="text-center">option</th>
+            <th colspan="2">ajout</th>
         </tr>
             <?php foreach ($rows as $row) : ?>
                 <tr>
@@ -17,8 +19,10 @@ function afficherTab($header,$rows)
                     <td><?=$row["Prix d'achat unitaire"];?></td>
                     <td><?=$row["Prix de vente unitaire"];?></td>
                     <td><?=$row["Quantité en stock"];?></td>
-                    <td>delete</td>
-                    <td><a href="http://localhost/NewProjetVap/modifForm.php?id=<?=$row["ID"];?>">modif</a></td>
+                    <td><a href="http://localhost/NewProjetVap/delete.php?id=<?=$row["ID"];?>">delete</a></td>
+                    <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>">modif</a></td>
+                    <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>&action=increment">+</a></td>
+                    <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>&action=decrement">-</a></td>
                 </tr>
             <?php endforeach ?>
         
@@ -36,8 +40,6 @@ function getHeaderTable()
     $header[] = "Prix de d'achat unitaire";
     $header[] = "Prix de vente unitaire";
     $header[] = "Quantité";
-    $header[] = "option";
-    $header[] = "option";
     return $header;
 }
 ?>
