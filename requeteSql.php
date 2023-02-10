@@ -42,17 +42,6 @@ function addData($ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock)
     }
 }
 
-function readItem ($id){
-$con = connectionData();
-$requete = "SELECT * FROM tabchiChaPomme where ID ='$id'";
-$stmt = $con -> query($requete);
-$row = $stmt ->fetchAll();
-if (!empty ($row)) {
-    return $row[0];
-}
-}
-
- 
 //recupere un Items
 function readItem($id) {
     $con = connectionData();
