@@ -6,8 +6,7 @@ function connectionData()
         $user = "admin";
         $pass = "adminpwd";
         $pdo = new PDO('mysql:host=localhost;dbname=vapStore', $user, $pass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         echo "ca marche !";
+         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo; /*retourne uniquement les 2 variable PDO dans d'autres fonction*/
 
     } catch (PDOException $e) {
@@ -53,3 +52,34 @@ if (!empty ($row)) {
 }
 }
 
+ 
+//recupere un Items
+function readItem($id) {
+    $con = connectionData();
+    $requete = "SELECT * from tabChichaPomme where ID = '$id' ";
+    $stmt = $con->query($requete);
+    $row = $stmt->fetchAll();
+    if (!empty($row)) {
+        return $row[0];
+    }
+}
+
+//met à jour le user
+function update($id,$ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock) {
+    try {
+        $con = connectionData();
+        $requete = "UPDATE `tabChichaPomme` SET
+         `Référence` = '$ref',
+         `Nom de l'article` = '$nArticle',
+          `Description de l'article` = '$dArticle',
+           `Prix d'achat unitaire` = '$aUnitaire',
+            `Prix de vente unitaire` = '$vUnitaire',
+            `Quantité en stock` = '$qStock'
+             WHERE `tabChichaPomme`.`ID` = $id ";
+        $con->query($requete);
+    }
+    catch(PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
