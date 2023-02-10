@@ -1,21 +1,12 @@
 <?php
+include("requeteSql.php");
+$id = $_GET["id"] ?? null;
 
-$ID = $_GET["ID"] ?? null;
-
-
-if (!empty($ID)) {
-    $sql = "DELETE FROM `chiChaPomme` WHERE `chiChaPomme`.`ID` = $ID;";
-
-    $chiChaPommeStatement = $pdo->prepare($sql);
-    $chiChaPommeStatement->execute();
+if (!empty($id))
+{
+    deleteUser($id);
 }
 
-
-
-
-
-// Redirige vers chiChaPomme.php , attention à ne pas faire de boucle infinie avec un include
-// header('Location: chiChaPomme.php'); 
-// exit;
-
-
+header('Location: chichaPomme.php');
+exit;
+?>

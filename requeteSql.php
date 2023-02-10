@@ -72,3 +72,45 @@ function update($id,$ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock) {
         die();
     }
 }
+
+function deleteUser($id) {
+    try {
+        $con = connectionData();
+        $requete = "DELETE FROM `tabChichaPomme` WHERE `tabChichaPomme`.`id` = $id;";
+        $con->query($requete);
+    }
+    catch(PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function increment($id)
+{
+    try {
+        $con = connectionData();
+        $requete = "UPDATE `tabChichaPomme` SET `Quantité en stock` = `Quantité en stock` + 1 WHERE `ID` = $id;";
+        $con->query($requete);
+    }
+    catch(PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function decrement($id)
+{
+    try {
+        $con = connectionData();
+        $requete = "UPDATE `tabChichaPomme` SET `Quantité en stock` = `Quantité en stock` - 1 WHERE `ID` = $id;";
+        $con->query($requete);
+    }
+    catch(PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+
+
+

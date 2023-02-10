@@ -61,6 +61,7 @@ echo '</pre>';
         <!-- NOTRE INPUT -->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <a href="chichaPomme.php">retour</a>
     <script src="chichaPomme.js"></script>
 </body>
 </html>
