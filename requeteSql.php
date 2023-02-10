@@ -6,7 +6,7 @@ function connectionData()
         $user = "admin";
         $pass = "adminpwd";
         $pdo = new PDO('mysql:host=localhost;dbname=vapStore', $user, $pass);
-         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
          echo "ca marche !";
         return $pdo; /*retourne uniquement les 2 variable PDO dans d'autres fonction*/
 
@@ -43,5 +43,13 @@ function addData($ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock)
     }
 }
 
+function readItem ($id){
+$con = connectionData();
+$requete = "SELECT * FROM tabchiChaPomme where ID ='$id'";
+$stmt = $con -> query($requete);
+$row = $stmt ->fetchAll();
+if (!empty ($row)) {
+    return $row[0];
+}
+}
 
-?>

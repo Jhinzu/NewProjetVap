@@ -6,3 +6,4 @@ document.getElementById("reference").addEventListener("input", function() {
 
 teste = document.getElementById("reference")
 console.log(teste);
+

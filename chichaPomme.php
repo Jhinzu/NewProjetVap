@@ -2,22 +2,23 @@
 //mes includes
 include("requeteSql.php");
 include("tabItems.php");
+include("delete.php");
 
 //lier notre formulaire a des variable  ??null = si la varibale n'existe pas alors elle est considérer comme null permets de ne pas afficher d'érreurs
-$ref = $_POST   ["reference"] ?? null;
-$nArticle = $_POST  ["nArticle"] ?? null;
-$dArticle = $_POST  ["dArticle"] ?? null;
-$aUnitaire = $_POST ["aUnitaire"] ?? null;
-$vUnitaire = $_POST ["vUnitaire"] ?? null;
-$qStock = $_POST    ["qStock"] ?? null;
+$ID = $_GET["ID"] ?? null ;
+$ref = $_POST["reference"] ?? null;
+$nArticle = $_POST["nArticle"] ?? null;
+$dArticle = $_POST["dArticle"] ?? null;
+$aUnitaire = $_POST["aUnitaire"] ?? null;
+$vUnitaire = $_POST["vUnitaire"] ?? null;
+$qStock = $_POST["qStock"] ?? null;
 
 // connection a la base de donées
 $coData = connectionData();
 
 // si les variable contiens des valeurs via le formulaire alors au moment de l'envoie il l'envoie a notre base de donées les saisie 
-if (!empty($ref) && !empty($nArticle) && !empty($dArticle) && !empty($aUnitaire) && !empty($vUnitaire) && !empty($qStock))
-{
-    addData($ref,$nArticle,$dArticle,$aUnitaire,$vUnitaire,$qStock);
+if (!empty($ref) && !empty($nArticle) && !empty($dArticle) && !empty($aUnitaire) && !empty($vUnitaire) && !empty($qStock)) {
+    addData($ref, $nArticle, $dArticle, $aUnitaire, $vUnitaire, $qStock);
 }
 
 // recupère toute les données dans un tableaux
@@ -27,18 +28,20 @@ $recupAllTab = allColData();
 ?>
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    </head>
-    <body>
-        <!-- TABLEAUX HTML -->
-        <?php
-            $ref = getHeaderTable();
-            afficherTab($ref,$recupAllTab);
-        ?>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- TABLEAUX HTML -->
+    <?php
+    $ref = getHeaderTable();
+    afficherTab($ref, $recupAllTab);
+    ?>
 
 
     <!-- NOTRE FORMULAIRE -->
@@ -68,10 +71,13 @@ $recupAllTab = allColData();
             <input name="qStock" type="text" class="form-control" id="qStock">
         </div>
         <!-- NOTRE INPUT -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <!--<button type="submit" class="btn btn-primary">Update</button>-->
+        <button type="submit" class="btn btn-primary">Supprimer</button>
     </form>
 
     <script src="chichaPomme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </body>
+</body>
+
 </html>
