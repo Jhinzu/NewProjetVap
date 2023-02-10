@@ -20,7 +20,7 @@ function afficherTab($header,$rows)
                     <td><?=$row["Prix de vente unitaire"];?></td>
                     <td><?=$row["Quantité en stock"];?></td>
                     <td><a href="http://localhost/NewProjetVap/delete.php?id=<?=$row["ID"];?>">delete</a></td>
-                    <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>">modif</a></td>
+                    <td><a href="http://localhost/NewProjetVap/modifForm.php?id=<?=$row["ID"];?>">modif</a></td>
                     <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>&action=increment">+</a></td>
                     <td><a href="http://localhost/NewProjetVap/updateStock.php?id=<?=$row["ID"];?>&action=decrement">-</a></td>
                 </tr>
